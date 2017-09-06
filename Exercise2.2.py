@@ -111,69 +111,40 @@ def eliminate(values):
     .........
     .........
     '''
-#    
-    def update_rows_cols(dat):
+    
+    def eliminate(dat):
         const = []
         elem = {}
-        rows_cols = rows + cols
-        print(rows_cols)
+        for value in dat:
+#            print('========================value')
+#            print(value)
             
-        for char in dat:
-    #        const = [value for key, value in values.items() if char in key and len()]
-            for key, value in values.items():
-                if char in key and len(value) == 1:
-                  
-                    const.append(value)
-                
-                if char in key and len(value) != 1:
-                    elem[key] = value
-    #        for item in const:
+            for x in value:
+#                print('========================value[x]')
+#                print(values[x])
+                if (len(values[x]) == 1):
+                  const.append(values[x])  
+                else:
+                    elem[x] = values[x]
+#            print('========================elem')
+#            print(elem)
+#            print('========================const')
+#            print(const)
+            
             for x in const:
-                elem = {key:value.replace(x,'') for key, value in elem.items() }
+                elem = { key:value.replace(x, '') for key, value in elem.items() }
+    #            for key, value in elem:
+    #                values[key] = value.replace(x, '')
             values.update(elem)
-            print('===================const')
-            print(const)
-            print('===================elem')
-            print(elem)
-            print('===================values')
-            print(values)
+#            print('================values')        
+#            print(values)        
             const = []
             elem = {}
         return values
-    values.update(update_rows_cols(rows))
-    values.update(update_rows_cols(cols))
-    
-    const = []
-    elem = {}
-    for square in square_units:
-        print('========================square')
-        print(square)
         
-        for x in square:
-            print('========================value[x]')
-            print(values[x])
-            if (len(values[x]) == 1):
-              const.append(values[x])  
-            else:
-                elem[x] = values[x]
-        print('========================elem')
-        print(elem)
-        print('========================const')
-        print(const)
-        
-        for x in const:
-            elem = { key:value.replace(x, '') for key, value in elem.items() }
-#            for key, value in elem:
-#                values[key] = value.replace(x, '')
-        values.update(elem)
-        print('================values')        
-        print(values)        
-        const = []
-        elem = {}
-#                tmp = set(values[x])
-#                intersection.add(tmp)
-#        print('================intersection')
-#        print(intersection)
+    values.update(eliminate(row_units))
+    values.update(eliminate(column_units))
+    values.update(eliminate(square_units))
     
     return values
 
