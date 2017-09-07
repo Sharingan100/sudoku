@@ -211,7 +211,7 @@ def reduce_puzzle(values):
     .........
     '''
     
-    count = 0
+#    count = 0
     compare_values = {}
     compare_values.update(values)
     processing_values = {}
@@ -220,16 +220,16 @@ def reduce_puzzle(values):
     while processing:
         processing_values.update(eliminate(compare_values))
         processing_values.update(only_choice(processing_values))
-        print('======================processing_values')
-        print(processing_values)
-        print('======================compare_values')
-        print(compare_values)
+#        print('======================processing_values')
+#        print(processing_values)
+#        print('======================compare_values')
+#        print(compare_values)
         
         if (compare_values == processing_values):
             processing = False
         compare_values.update(processing_values)
-        count += 1
-        print(count)
+#        count += 1
+#        print(count)
         
     values.update(compare_values)
     return values
