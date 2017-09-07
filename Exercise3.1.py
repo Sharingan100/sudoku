@@ -162,46 +162,24 @@ def only_choice(values):
             
 #            convert str to set
 #            convet set to list
-            print('=============values[key]')
-            print(values[key])
+#            print('=============values[key]')
+#            print(values[key])
     
             if len(values[key]) != 1:
 #            append every lists together
                 unit.update({key:values[key]})
                 value = set(values[key])
-                print('=============value')
-                print(value)
                 checker = checker.union(value)
                 elem += list(value)
-                
-        print('=============elem')
-        print(elem)
-        print('=============checker')
-        print(checker)
-        print('=============unit')
-        print(unit)
-        print('=============type(unit)')
-        print(type(unit))
-        
+         
         for x in checker:
-            values_tmp = {}
+#            find value occurs once
             if (elem.count(x) == 1):
-                print('===============elem.count(x)')
-                print(elem.count(x))
+#                find that value occurs inside unit dict
                 for key2, value2 in unit.items():
-                    print('===============key')
-                    print(key2 )
-
-                    print('===============value')
-                    print(value2)
                     if (value2.find(x) != -1):
-                        print('===============value2.find(x)')
-                        print(value2.find(x))
-#                        values_tmp = {} 
-
+#                        update values dict to x
                         values.update({key2 : x})
-#                        print('===============values')
-#                        print(values )
                 
         
         
